@@ -18,7 +18,7 @@
             <p><a class="btn btn-primary btn-lg" href="/scrape"
                         role="button">Scrape New Data</a></p>
         </div>
-        <!-- Add section fro Mars News -->
+        <!-- Add section from Mars News -->
         <div class="row" id="mars_news">
             <div class="col-md-12">
                 <div class="media">
@@ -46,6 +46,16 @@
                     <h4>Mars Facts</h4>
                     {{mars.facts | safe }}
                 </div>
+            </div>
+        </div>
+        <!-- Add Hemisphere Images-->
+        <div class="row" id='hemisphere'>
+            <div class='col-md-12'>
+                <h2>Mars Hemispheres</h2>
+                {% for hemisphere in mars.hemi_images %}
+                <img src="{{hemisphere['img_url']}}" alt="{{hemisphere['title']}}" class="img-responsive">
+                <p>{{hemisphere['title']}}</p>
+                {% endfor %}
             </div>
         </div>
     </div>
