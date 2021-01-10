@@ -7,7 +7,7 @@ import datetime as dt
 # Patch to ChromDriver
 # which chromedriver
 
-def scrap_all():
+def scrape_all():
     # Set the executable path and initialize the chrome brownse in splinter
     executable_path = {'executable_path': '/Users/osvaldoferraz/Desktop/Development/chromedriver'}
     browser = Browser('chrome', **executable_path, headless=False)
@@ -94,17 +94,19 @@ def mars_facts():
     try:
         # scrape a table from the website
         df = pd.read_html('http://space-facts.com/mars/')[0]
+
     except BaseException:
         return None
 
     #Assign columns and set index of dataframe
-    df.columns = ['description', 'value']
+    df.columns = ['description', 'Mars']
     df.set_index('description', inplace=True)
 
     #COnvert dataframe into HTML format, add bootstrap
-    df.to_html()
+    return df.to_html()
 
 if __name__ == "__main__":
+    
     #if returning as script, print scraped data
     print(scrape_all())
 
