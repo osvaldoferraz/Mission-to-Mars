@@ -8,6 +8,10 @@
      rel="stylesheet"
      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
    />
+   <link 
+    rel="stylesheet" 
+    href="https://unpkg.com/@coreui/icons/css/all.min.css"
+    />
 </head>
 <body>
     <div class='container'>
@@ -15,8 +19,11 @@
         <div class='jumbotron text-center'>
             <h1>Mission to Mars</h1>
             <!-- Add a button to activate scraping script -->
-            <p><a class="btn btn-primary btn-lg" href="/scrape"
-                        role="button">Scrape New Data</a></p>
+            <a href="/scrape">
+                <button type="button" class='btn btn-primary btn-lg'>
+                    <span class='cil-zoom'></span>   Scrape New Data
+                </button>
+            </a>         
         </div>
         <!-- Add section from Mars News -->
         <div class="row" id="mars_news">
@@ -32,7 +39,7 @@
         </div>
         <!-- Featured Image -->
         <div class="row" id="mars-featured-image">
-            <div class="col-md-8">
+            <div class="col-xs-12 col-md-8">
                 <h2>Featured Mars Image</h2>
                 <img 
                     src="{{mars.featured_image}}" 
@@ -41,22 +48,24 @@
                 />
             </div>
             <!-- Mars Facts -->
-            <div class="col-md-4">
-                <div class="row" id="mars-facts">
-                    <h4>Mars Facts</h4>
+            <div class="col-xs-6 col-md-4">
+                <div class="img-responsive" id="mars-facts">
+                    <h2>Mars Facts</h2>
                     {{mars.facts | safe }}
                 </div>
             </div>
         </div>
         <!-- Add Hemisphere Images-->
         <div class="row" id='hemisphere'>
-            <div class='col-md-12'>
+            <figure>
                 <h2>Mars Hemispheres</h2>
                 {% for hemisphere in mars.hemi_images %}
-                <img src="{{hemisphere['img_url']}}" alt="{{hemisphere['title']}}" class="img-responsive">
-                <p>{{hemisphere['title']}}</p>
+                <img src="{{hemisphere['img_url']}}" alt="{{hemisphere['title']}}" class="col-xs-6 col-md-3 img-thumbnail">
+                    <div class='caption'>
+                    <h14>{{hemisphere['title']}}</h14>
+                    </div>
                 {% endfor %}
-            </div>
+            </figure>    
         </div>
     </div>
 </body>
